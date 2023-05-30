@@ -94,12 +94,8 @@
         show_bucket();
       });
       function show_bucket() {
-        // Mission 2 - 버킷리스트를 등록/조회하는 URL의 주소를 '/success'로 변경 해 주세요.
-        // 정답 : fetch('/success').then(res => res.json()).then(data => {
-        fetch('/bucket').then(res => res.json()).then(data => {
-                    // Mission 1 - 요청하는 함수의 return 값을 ‘test_answer’ 로 변경 해 주세요.
-                         // 정답 : let rows = data['test_answer']
-					let rows = data['result']
+        fetch('/success').then(res => res.json()).then(data => {
+					let rows = data['test_answer']
                     console.log(rows)
 					$('#bucket-list').empty()
           rows.forEach((a) => {
@@ -116,12 +112,8 @@
         let bucket = $("#bucket").val();
 
         let formData = new FormData();
-        // Mission 3 - bucket 정보를 받아, 저장하는 값을 ‘test_give’ 로 바꾸어 주세요.
-        // 정답 : formData.append("test_give", bucket);
-        formData.append("bucket_give", bucket);
-          // Mission 2 - 버킷리스트를 등록/조회하는 URL의 주소를 '/success'로 변경 해 주세요.
-               // 정답 : fetch('/success', {method: "POST", body: formData,}).then((res) => res.json()).then((data) => {
-        fetch('/bucket', {method: "POST", body: formData,}).then((res) => res.json()).then((data) => {
+        formData.append("test_give", bucket);
+        fetch('/success', {method: "POST", body: formData,}).then((res) => res.json()).then((data) => {
             alert(data["msg"]);
             window.location.reload();
           });
